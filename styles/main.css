@@ -1,0 +1,19 @@
+html{
+    font-size: 18px; /* fallback font size: should be large enough for mobile screens */
+    font-size: min(max(16px, 4vw), 24px); /* responsive font size */
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
