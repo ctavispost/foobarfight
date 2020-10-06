@@ -134,6 +134,7 @@ header {
     width: calc(100vh / 13);
     content: " ";
     display: block;
+    transition: 0.5s;
 }
 
 footer {
