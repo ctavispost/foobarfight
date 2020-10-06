@@ -130,7 +130,7 @@ header {
 .zombie {
     color: blueviolet;
     background-color: blueviolet;
-    padding: 6rem 2rem
+    padding: 6rem 2rem;
     content: "";
     display: block;
     transition: 0.5s;
@@ -139,6 +139,10 @@ header {
 
 footer {
     max-height: 10vh;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
     width: 100vw;
 }
 
