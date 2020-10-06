@@ -28,6 +28,7 @@ const monstersMove = (counter) => {
         monsters[counter].position--;
     }
     const positionName = `zombieLoc${monsters[counter].postion}`
+    const zoms = document.getElementsByClassName('zombie');
     const position = zoms[counter].setAttribute('class', 'positionName');
 }
 
@@ -38,9 +39,8 @@ const getDamage = (place) => {
 }
 
 const monstersTurn = () => {
-    const zoms = document.getElementsByClassName('zombie');
-    if (zoms.length !== 0){
-        for (i = 0; i < zoms.length; i++) {
+    if (monsters.length !== 0){
+        for (i = 0; i < monsters.length; i++) {
             monstersMove(i);
             getDamage(i);
         }
@@ -56,9 +56,9 @@ const checkHealth = () => {
 }
 
 const runGame = () => {
-    zombTimer();
-    zombCreateStop();
-    timeTurns();
+    zombTimer;
+    zombCreateStop;
+    timeTurns;
 }
 
-runGame;
+runGame();
