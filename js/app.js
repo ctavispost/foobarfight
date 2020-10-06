@@ -8,29 +8,36 @@ const monsters = [{type: 'zombie', attack: 1, position: 1}];
 
 let playerHP = 20;
 
+
 const createZombie = () => {
-    const zombie = document.createElement('div');
+   /* 
+   const zombie = document.createElement('div');
     zombie.setAttribute('class', 'zombie');
     document.querySelector('main').appendChild(zombie);
+    */
     const monsterObj = {type: 'zombie', attack: 1, position: 1};
     monsters.push(monsterObj)
 }
 
+
 const zombTimer = setInterval(createZombie, 2000);
 const zombCreateStop = setTimeout(clearInterval(zombTimer), 20000);
 
-// move zombies toward player char, increasing position if to the right, and decreasing position if to the left
-//MVP will only concern itself with monsters to the right
+// move zombies toward player char
+//MVP will only concern itself with monsters from one direction
 const monstersMove = (counter) => {
-    if (monsters[counter].position < 6){
-        monsters[counter].postion++;                
+    if (monsters[counter].position < 6)
+    const oldPosition = monsters[counter].position;
+    const newPosition = monsters[counter].postion++;                
     } //for attacks from either side:
     /*else if (monsters[counter].position > 7) {
         monsters[counter].position--;
     }*/
-    const positionName = `zombieLoc${monsters[counter].postion}`
-    const zoms = document.getElementsByClassName('zombie');
-    const position = zoms[counter].setAttribute('class', positionName);
+
+    const zomIdOld = document.getElementById('monst' + oldPosition);
+    zomIdOld.classlist.add('toggleMonster');     
+    const zomIdNew = document.getElementByID('monst' + newPosition);
+    zomIdNew.classlist.remove('toggleMonster');
 }
 
 const getDamage = (place) => {
