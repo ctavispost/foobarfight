@@ -77,8 +77,54 @@ header {
     left: 0;
 }*/
 
-/*.zombieLoc {
-    grid-area = monst...
+.zombieLoc1 {
+    grid-area = 2 / 13 / 5 / 14;
+}
+
+.zombieLoc2 {
+    grid-area = 2 / 12 / 5 / 13;
+}
+
+.zombieLoc3 {
+    grid-area = 2 / 11 / 5 / 12;
+}
+
+.zombieLoc4 {
+    grid-area = 2 / 10 / 5 / 11;
+}
+
+.zombieLoc5 {
+    grid-area = 2 / 9 / 5 / 10;
+}
+
+.zombieLoc6 {
+    grid-area = 2 / 8 / 5 / 9;
+}
+
+/* for zombies attacking from behind  */
+/*
+.zombieLoc7 {
+    grid-area = 2 / 6 / 5 / 7;
+}
+
+.zombieLoc8 {
+    grid-area = 2 / 5 / 5 / 6;
+}
+
+.zombieLoc9 {
+    grid-area = 2 / 4 / 5 / 5;
+}
+
+.zombieLoc10 {
+    grid-area = 2 / 3 / 5 / 4;
+}
+
+.zombieLoc11 {
+    grid-area = 2 / 2 / 5 / 3;
+}
+
+.zombieLoc12 {
+    grid-area = 2 / 1 / 5 / 2;
 }*/
 
 .zombie {
