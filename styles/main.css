@@ -10,7 +10,7 @@ html{
     --textHighEmph: hsla(0, 0%, 100%, .87);
     --textMedEmph: hsla(0, 0%, 100%, .6);
     --gameRowHt: 2rem; /* height of grid rows for game */
-    --playerHeight: calc(var(--gameRowHt * 3))
+    --playerHeight: calc(var(--gameRowHt) * 3)
 }
 
 html, body {
@@ -30,6 +30,7 @@ header {
 .backgroundDark {
     /* Sets non-game area to Material Design's dark theme */
     background-color: #121212;
+    width: 100%;
 }
 
 .brightText {
@@ -47,32 +48,34 @@ header {
 
 .gameContainter {
     display: grid;
-    background-color: white;
+    background-color: yellow;
     min-height: 50vh;
-    max-height: 80vh;
-}
-
-.gameGrid {
     grid-gap: 0; /* fallback for gap */
     gap: 0;
     grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(3, auto);
-    grid-template-areas:
-    "monst1 monst2 monst3 monst4 monst5 monst6 playa monst7 monst8 monst9 monst10 monst11 monst12"
-    "monst1 monst2 monst3 monst4 monst5 monst6 playa monst7 monst8 monst9 monst10 monst11 monst12"
-    "monst1 monst2 monst3 monst4 monst5 monst6 playa monst7 monst8 monst9 monst10 monst11 monst12";
-    align-content: end;
+    grid-template-rows: 1fr repeat(3, 2rem);
 }
 
 .player {
     color: red;
     background-color: red;
-    height: var(--playerHeight);
-    width: calc(100vh / 13);
-    grid-area: playa;
+    display: inline;
+    grid-area: 2 / 7 / 5 / 8;
     z-index: 100;
-    content: " ";
-;}
+    content: "";
+    position: relative;
+    padding: 6rem 2rem;
+}
+
+/*.player::after {
+    position: absolute;
+    background-color: red;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}*/
 
 /*.zombieLoc {
     grid-area = monst...
@@ -84,10 +87,11 @@ header {
     height: var(--playerHeight);
     width: calc(100vh / 13);
     content: " ";
+    display: block;
 }
 
 footer {
-    max-height: 20vh;
+    max-height: 10vh;
     width: 100vw;
 }
 
