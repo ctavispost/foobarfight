@@ -32,14 +32,14 @@ const monstersMove = (counter) => {
 }
 
 const getDamage = (place) => {
-    if (monsters[place].position === (7 || 6) {
+    if (monsters[place].position === (7 || 6)) {
         playerHP -= monsters[place].attack;
     }
 }
 
 const monstersTurn = () => {
-    const zoms = document.getElementsByClassName(zombie);
-    if (zoms.length > 0){
+    const zoms = document.getElementsByClassName('zombie');
+    if (zoms.length !== 0){
         for (i = 0; i < zoms.length; i++) {
             monstersMove(i);
             getDamage(i);
@@ -49,8 +49,16 @@ const monstersTurn = () => {
 
 const timeTurns = setInterval(monstersTurn, 500);
 
+const checkHealth = () => {
+    if (playerHP === 0) {
+        clearInterval(timeTurns);
+    } 
+}
+
 const runGame = () => {
     zombTimer();
     zombCreateStop();
     timeTurns();
 }
+
+runGame;
