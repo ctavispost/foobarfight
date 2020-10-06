@@ -4,7 +4,7 @@ console.log("Hello?");
 //playerChar.setAttribute('class', 'player');
 //document.querySelector('main').appendChild(playerChar);
 
-const monsters = [];
+const monsters = [{type: 'zombie', attack: 1, position: 1}];
 
 let playerHP = 20;
 
@@ -24,16 +24,17 @@ const zombCreateStop = setTimeout(clearInterval(zombTimer), 20000);
 const monstersMove = (counter) => {
     if (monsters[counter].position < 6){
         monsters[counter].postion++;                
-    } else if (monsters[counter].position > 7) {
+    } //for attacks from either side:
+    /*else if (monsters[counter].position > 7) {
         monsters[counter].position--;
-    }
+    }*/
     const positionName = `zombieLoc${monsters[counter].postion}`
     const zoms = document.getElementsByClassName('zombie');
-    const position = zoms[counter].setAttribute('class', 'positionName');
+    const position = zoms[counter].setAttribute('class', positionName);
 }
 
 const getDamage = (place) => {
-    if (monsters[place].position === (7 || 6)) {
+    if (monsters[place].position === 6) { //for dual sided attacks: (7 || 6)) {
         playerHP -= monsters[place].attack;
     }
 }
@@ -47,7 +48,7 @@ const monstersTurn = () => {
     }
 }
 
-const timeTurns = setInterval(monstersTurn, 500);
+const timeTurns = setInterval(monstersTurn, 2000);
 
 const checkHealth = () => {
     if (playerHP === 0) {
