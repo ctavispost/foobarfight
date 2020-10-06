@@ -21,29 +21,36 @@ const zombCreateStop = setTimeout(clearInterval(zombTimer), 20000);
 
 // move zombies toward player char, increasing position if to the right, and decreasing position if to the left
 //MVP will only concern itself with monsters to the right
-const monstersMove = () => {
+const monstersMove = (counter) => {
+    if (monsters[counter].position < 6){
+        monsters[counter].postion++;                
+    } else if (monsters[counter].position > 7) {
+        monsters[counter].position--;
+    }
+    const positionName = `zombieLoc${monsters[counter].postion}`
+    const position = zoms[counter].setAttribute('class', 'positionName');
+}
+
+const getDamage = (place) => {
+    if (monsters[place].position === (7 || 6) {
+        playerHP -= monsters[place].attack;
+    }
+}
+
+const monstersTurn = () => {
     const zoms = document.getElementsByClassName(zombie);
     if (zoms.length > 0){
         for (i = 0; i < zoms.length; i++) {
-            if (monsters[i].position < 6){
-                monsters[i].postion++;                
-            } else if (monsters[i].position > 7) {
-                monsters[i].position--;
-            }
-            const positionName = `zombieLoc${monsters[i].postion}`
-            const position = zoms[i].setAttribute('class', 'positionName');
+            monstersMove(i);
+            getDamage(i);
         }
     }
 }
 
-const getDamage = () => {
-    if ()
-}
-
-const timeMoves = setInterval(monstersMove, 500);
+const timeTurns = setInterval(monstersTurn, 500);
 
 const runGame = () => {
-    zombTimer;
-    zombCreateStop;
-    timeMoves;
+    zombTimer();
+    zombCreateStop();
+    timeTurns();
 }
