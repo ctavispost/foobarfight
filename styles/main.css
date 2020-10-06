@@ -15,6 +15,7 @@ html{
 
 html, body {
     height: 100%;
+    width: 100%;
 }
 
 body {
@@ -54,6 +55,7 @@ header {
     gap: 0;
     grid-template-columns: repeat(13, 1fr);
     grid-template-rows: 1fr repeat(3, 2rem);
+    width: 100%;
 }
 
 .player {
@@ -66,16 +68,6 @@ header {
     position: relative;
     padding: 6rem 2rem;
 }
-
-/*.player::after {
-    position: absolute;
-    background-color: red;
-    content: "";
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}*/
 
 .zombieLoc1 {
     grid-area = 2 / 13 / 5 / 14;
@@ -132,8 +124,8 @@ header {
     background-color: blueviolet;
     padding: 6rem 2rem;
     content: "";
-    display: block;
-    transition: 0.5s;
+    display: inline;
+    transition: 0.25s;
     z-index: 99;
 }
 
