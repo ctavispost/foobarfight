@@ -101,8 +101,8 @@ header {
     grid-area = 2 / 8 / 5 / 9;
 }
 
-/* for zombies attacking from behind  */
-/*
+/* for zombies attacking from behind (not implemented yet!) */
+
 .zombieLoc7 {
     grid-area = 2 / 6 / 5 / 7;
 }
@@ -125,16 +125,16 @@ header {
 
 .zombieLoc12 {
     grid-area = 2 / 1 / 5 / 2;
-}*/
+}
 
 .zombie {
     color: blueviolet;
     background-color: blueviolet;
-    height: var(--playerHeight);
-    width: calc(100vh / 13);
-    content: " ";
+    padding: 6rem 2rem
+    content: "";
     display: block;
     transition: 0.5s;
+    z-index: 99;
 }
 
 footer {
