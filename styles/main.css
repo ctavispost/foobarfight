@@ -1,6 +1,16 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 html{
     font-size: 18px; /* fallback font size: should be large enough for mobile screens */
     font-size: min(max(16px, 4vw), 24px); /* responsive font size */
+
+    /* variables */
+    --textHighEmph: hsla(0, 0%, 100%, .87);
+    --textMedEmph: hsla(0, 0%, 100%, .6);
+    --gameRowHt: 2rem; /* height of grid rows for game */
+    --playerHeight: calc(var(--gameRowHt * 3))
 }
 
 html, body {
@@ -10,10 +20,74 @@ html, body {
 body {
     margin: 0;
     padding: 0;
-
 }
 
-*, *:before, *:after {
-    box-sizing: inherit;
+header {
+    max-height: 20vh;
+    width: 100vw;
+}
+
+.backgroundDark {
+    /* Sets non-game area to Material Design's dark theme */
+    background-color: #121212;
+}
+
+.brightText {
+    color: var(--textHighEmph);
+}
+
+.paddTwoRem {
+    padding: 2rem;
+}
+
+.gridCenter {
+    display: grid;
+    justify-content: center;  
+}
+
+.gameContainter {
+    display: grid;
+    background-color: white;
+    min-height: 50vh;
+    max-height: 80vh;
+}
+
+.gameGrid {
+    grid-gap: 0; /* fallback for gap */
+    gap: 0;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+    "monst1 monst2 monst3 monst4 monst5 monst6 playa monst7 monst8 monst9 monst10 monst11 monst12"
+    "monst1 monst2 monst3 monst4 monst5 monst6 playa monst7 monst8 monst9 monst10 monst11 monst12"
+    "monst1 monst2 monst3 monst4 monst5 monst6 playa monst7 monst8 monst9 monst10 monst11 monst12";
+    align-content: end;
+}
+
+.player {
+    color: red;
+    background-color: red;
+    height: var(--playerHeight);
+    width: calc(100vh / 13);
+    grid-area: playa;
+    z-index: 100;
+    content: " ";
+;}
+
+/*.zombieLoc {
+    grid-area = monst...
+}*/
+
+.zombie {
+    color: blueviolet;
+    background-color: blueviolet;
+    height: var(--playerHeight);
+    width: calc(100vh / 13);
+    content: " ";
+}
+
+footer {
+    max-height: 20vh;
+    width: 100vw;
 }
 
