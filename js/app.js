@@ -1,31 +1,16 @@
-console.log("Hello?");
-
-//const playerChar = document.createElement('div');
-//playerChar.setAttribute('class', 'player');
-//document.querySelector('main').appendChild(playerChar);
-
-const monsters = [{type: 'zombie', attack: 1, position: 1}];
-
 let playerHP = 20;
 
 
-const createZombie = () => {
-   /* 
-   const zombie = document.createElement('div');
-    zombie.setAttribute('class', 'zombie');
-    document.querySelector('main').appendChild(zombie);
-    */
-    const monsterObj = {type: 'zombie', attack: 1, position: 1};
-    monsters.push(monsterObj)
-}
 
 
+/*
 const zombTimer = setInterval(createZombie, 2000);
 const zombCreateStop = setTimeout(clearInterval(zombTimer), 20000);
+*/
 
 // move zombies toward player char
 //MVP will only concern itself with monsters from one direction
-const monstersMove = (counter) => {
+/*const monstersMove = (counter) => {
     if (monsters[counter].position < 6)
     const oldPosition = monsters[counter].position;
     const newPosition = monsters[counter].postion++;                
@@ -33,19 +18,20 @@ const monstersMove = (counter) => {
     /*else if (monsters[counter].position > 7) {
         monsters[counter].position--;
     }*/
-
+/*
     const zomIdOld = document.getElementById('monst' + oldPosition);
     zomIdOld.classlist.add('toggleMonster');     
     const zomIdNew = document.getElementByID('monst' + newPosition);
     zomIdNew.classlist.remove('toggleMonster');
-}
-
+}*/
+/*
 const getDamage = (place) => {
     if (monsters[place].position === 6) { //for dual sided attacks: (7 || 6)) {
         playerHP -= monsters[place].attack;
     }
 }
-
+*/
+/*
 const monstersTurn = () => {
     if (monsters.length !== 0){
         for (i = 0; i < monsters.length; i++) {
@@ -54,15 +40,16 @@ const monstersTurn = () => {
         }
     }
 }
-
-const timeTurns = setInterval(monstersTurn, 2000);
-
+*/
+//const timeTurns = setInterval(monstersTurn, 2000);
+/*
 const checkHealth = () => {
     if (playerHP === 0) {
         clearInterval(timeTurns);
     } 
 }
-
+*/
+/*
 const runGame = () => {
     zombTimer;
     zombCreateStop;
@@ -70,3 +57,4 @@ const runGame = () => {
 }
 
 runGame();
+*/
