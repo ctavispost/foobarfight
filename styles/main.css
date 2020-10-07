@@ -13,7 +13,7 @@ html{
     --playerHeight: calc(var(--gameRowHt) * 3)
 }
 
-html, body {
+html, body, main {
     height: 100%;
     width: 100%;
 }
@@ -23,9 +23,16 @@ body {
     padding: 0;
 }
 
+main {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: 1fr 12rem; 
+    align-content: end;
+}
+
 header {
-    max-height: 20vh;
     width: 100vw;
+    display: block;
 }
 
 .backgroundDark {
@@ -42,99 +49,30 @@ header {
     padding: 2rem;
 }
 
-.gridCenter {
-    display: grid;
-    justify-content: center;  
-}
-
-.gameContainter {
-    display: grid;
-    background-color: yellow;
-    min-height: 50vh;
-    grid-gap: 0; /* fallback for gap */
-    gap: 0;
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: 1fr repeat(3, 2rem);
-    width: 100%;
+.monster {
+    display: inline;
+    padding: 6rem 2rem;
+    background-color: red;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 .player {
-    color: red;
-    background-color: red;
     display: inline;
-    grid-area: 2 / 7 / 5 / 8;
-    z-index: 100;
-    content: "";
-    position: relative;
     padding: 6rem 2rem;
-}
-
-
-/* monsters from right */
-#monst12 {
-    grid-area: 2 / 13 / 5 / 14;
-    
-}
-
-#monst11 {
-    grid-area: 2 / 12 / 5 / 13;
-}
-
-#monst10 {
-    grid-area: 2 / 11 / 5 / 12;
-}
-
-#monst9 {
-    grid-area: 2 / 10 / 5 / 11;
-}
-
-#monst8 {
-    grid-area: 2 / 9 / 5 / 10;
-}
-
-#monst7 {
-    grid-area: 2 / 8 / 5 / 9;
-}
-
-/* monsters from the left */
-#monst6 {
-    grid-area: 2 / 6 / 5 / 7;
-}
-#monst5 {
-    grid-area: 2 / 5 / 5 / 6;
-}
-
-#monst4 {
-    grid-area: 2 / 4 / 5 / 5;
-}
-
-#monst3 {
-    grid-area: 2 / 3 / 5 / 4;
-}
-
-#monst2 {
-    grid-area: 2 / 2 / 5 / 3;
-}
-
-#monst 1 {
-    grid-area: 2 / 1 / 5 / 2;
+    background-color: purple;
+    grid-column-start: 13;
+    grid-column-end: 14;
+    grid-row-start: 2;
+    grid-row-end: 3;
 }
 
 .toggleMonster {
-    display: none; /* could try changing background-color instead...? */
-}
-
-.zombie {
-    color: blueviolet;
-    background-color: blueviolet;
-    padding: 6rem 2rem;
-    content: "";
-    display: inline;
-    transition: 0.25s;
-    z-index: 99;
+    display: none;
 }
 
 footer {
+    display: block;
     max-height: 10vh;
     position: absolute;
     bottom: 0;
