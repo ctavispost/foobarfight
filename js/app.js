@@ -1,7 +1,88 @@
 let playerHP = 20;
 
 
+let monsterId = 0;
 
+const monsterArr = [{
+    type: 'zombie',
+    attack: 1,
+    colStart: 1,
+    colEnd: 2,
+    hitPoints: 4
+}];
+
+const playerChar = {
+    type: 'player',
+    attack: 2,
+    hitPoints: 20
+}
+
+const mainEl = document.querySelector('main');
+
+const createMonster = () => {
+    const monster = document.createElement('div');
+    monster.setAttribute('class', 'monster');
+
+  //set new monsterID to a trackable number
+    monster.setAttribute('id', monsterId);
+    mainEl.appendChild(monster);
+}
+
+const addMonster = () => {
+    monsterId++;
+    monsterArr.push({
+        type: 'zombie',
+        attack: 1,
+        colStart: 1,
+        colEnd: 2,
+        hitPoints: 4
+    });
+}
+
+const updateMonstCol = () => {
+    for (i = 0; i < monsterArr.length; i ++){
+    
+    if(monsterArr[i].colStart < 12){
+        const oldStart = monsterArr[i].colStart;
+        monsterArr[i].colStart++
+        monsterArr[i].colEnd++
+        const monsToClassify = document.getElementById = `${i}`;
+      //remove class specifying location
+        console.log(monstToClassify.typeOf)
+        monsToClassify.classList.remove(`gridSpace${oldStart}`);
+        monsToClassify.className = `gridSpace ${monsterArr[i].colStart}`;
+      //change classes instead?
+        /*
+        const monsterInCss = document.getElementById(monsterIdString);
+      //console.log(monsterIdString)
+      //console.log(monsterInCss);
+        monsterInCss.removeAttribute('style');
+        monsterInCss.setAttribute('style', 'grid-column:' +  monsterArr[i].colStart + '/' + monsterArr[i].colEnd);
+    */
+        }
+    }
+}
+
+
+const createPlayer = () => {
+    playerDiv = document.createElement('div');
+    playerDiv.setAttribute('class', 'player');
+    mainEl.appendChild(playerDiv);
+} 
+
+
+const playGame = () => {
+    createMonster()
+    createPlayer()
+}
+
+
+
+setInterval(updateMonstCol(), 1000)
+setInterval(addMonster(), 2500)
+
+playGame();
+console.log(monsterArr.length)
 
 /*
 const zombTimer = setInterval(createZombie, 2000);
