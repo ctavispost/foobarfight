@@ -1,26 +1,5 @@
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-
-html{
-    font-size: 18px; /* fallback font size: should be large enough for mobile screens */
-    font-size: min(max(16px, 4vw), 24px); /* responsive font size */
-
-    /* variables */
-    --textHighEmph: hsla(0, 0%, 100%, .87);
-    --textMedEmph: hsla(0, 0%, 100%, .6);
-    --gameRowHt: 2rem; /* height of grid rows for game */
-    --playerHeight: calc(var(--gameRowHt) * 3)
-}
-
 html, body, main {
     height: 100%;
-    width: 100%;
-}
-
-body {
-    margin: 0;
-    padding: 0;
 }
 
 main {
@@ -28,25 +7,6 @@ main {
     grid-template-columns: repeat(13, 1fr);
     grid-template-rows: 1fr 12rem; 
     align-content: end;
-}
-
-header {
-    width: 100vw;
-    display: block;
-}
-
-.backgroundDark {
-    /* Sets non-game area to Material Design's dark theme */
-    background-color: #121212;
-    width: 100%;
-}
-
-.brightText {
-    color: var(--textHighEmph);
-}
-
-.paddTwoRem {
-    padding: 2rem;
 }
 
 .monster {
@@ -67,17 +27,65 @@ header {
     grid-row-end: 3;
 }
 
-.toggleMonster {
-    display: none;
+gridSpace2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
-footer {
-    display: block;
-    max-height: 10vh;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    width: 100vw;
+gridSpace3{
+    grid-column-start: 3;
+    grid-column-end: 4;
 }
 
+gridSpace4 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    
+}
+
+gridSpace5 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+    
+}
+
+gridSpace6 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+    
+}
+
+gridSpace7 {
+    grid-column-start: 7;
+    grid-column-end: 8;
+    
+}
+
+gridSpace8 {
+    grid-column-start: 8;
+    grid-column-end: 9;
+    
+}
+
+gridSpace9 {
+    grid-column-start: 9;
+    grid-column-end: 10;
+    
+}
+
+gridspace10 {
+    grid-column-start: 10;
+    grid-column-end: 11;
+}
+
+gridspace11 {
+    grid-column-start: 11;
+    grid-column-end: 12;
+    
+}
+
+gridSpace12 {
+    grid-column-start: 12;
+    grid-column-end: 13;
+
+}
