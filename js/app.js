@@ -50,22 +50,11 @@ const updateMonstCol = () => {
             const oldStart = monsterArr[i].colStart;
             monsterArr[i].colStart++;
             monsterArr[i].colEnd++;
-            /*const monsToClassify = document.getElementById = `${i}`;
-            
-            */
-        //remove class specifying location
-            /* 
-            monsToClassify.classList.remove(`gridSpace${oldStart}`);
-            monsToClassify.className = `gridSpace${monsterArr[i].colStart}`;
-            */
-      //change classes instead?
-        
-        const monsterIdString = "monst" + i;    
-        const monsterInCss = document.getElementById(monsterIdString);
-        console.log(monsterIdString)
-        monsterInCss.removeAttribute('style');
-        monsterInCss.setAttribute('style', 'grid-column:' +  monsterArr[i].colStart + '/' + monsterArr[i].colEnd);
-    
+            const monsterIdString = "monst" + i;    
+            const monsterInCss = document.getElementById(monsterIdString);
+            console.log(monsterIdString)
+            monsterInCss.removeAttribute('style');
+            monsterInCss.setAttribute('style', 'grid-column:' +  monsterArr[i].colStart + '/' + monsterArr[i].colEnd);
         }
     }
 }
@@ -77,20 +66,39 @@ const createPlayer = () => {
 } 
 
 const freshMonster = () => {
-    console.log("freshMonster");
-    createMonster();
-    addMonster();
+    //create new monsters
+    //console.log("freshMonster");
+    if (monsterId < 21) {
+        createMonster();
+        addMonster();
+    }
 }
 
 createPlayer();
-const makeMonst = setInterval(freshMonster, 2500);
-const updateColumns = setInterval(updateMonstCol, 1000);
-
-//on player demise
-if (playerChar.hitPoints === 0) {
-    clearInterval(updateColumns);
-    clearInterval(newMonst);
+//check for player demise, stop game and end timers if dead
+const checkPlayerHp = () => {
+    if (playerChar.hitPoints === 0) {
+        clearInterval(updateColumns);
+        clearInterval(newMonst);
+        clearInterval(checkPlayerHitPoints);
+    }
 }
+
+
+//stop generating monsters if there has been time to make 20 of them
+/*
+const noMoreMonsters = () => {
+    clearInterval(makeMonst);
+}
+*/
+
+//const stopMonstArrival = setTimout(noMoreMonsters, 50000);
+
+const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
+const makeMonst = setInterval(freshMonster, 2500);
+const stopGenerateMonst = setInterval(checkNumbMonst, 2500);
+const updateColumns = setInterval(updateMonstCol, 200);
+
 
 /*
 const zombTimer = setInterval(createZombie, 2000);
