@@ -22,6 +22,10 @@ header, footer {
     background: #121212;
 }
 
+.padTwoRem {
+    padding: 2rem;
+}
+
 main {
     display: grid;
     grid-template-columns: repeat(13, 1fr);
