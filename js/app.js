@@ -1,10 +1,8 @@
-let playerHP = 20;
-
-
+//set monster counter to be added to new monster elements as an ID
 let monsterId = 0;
 
 const monsterArr = [{
-    type: 'zombie',
+    type: 'zombie', //noted for later versions to be able to have other monsters
     attack: 1,
     colStart: 1,
     colEnd: 2,
@@ -17,18 +15,22 @@ const playerChar = {
     hitPoints: 20
 }
 
+//get main element to append new elements to
 const mainEl = document.querySelector('main');
 
 const createMonster = () => {
+    console.log('createMonster');
     const monster = document.createElement('div');
     monster.setAttribute('class', 'monster');
 
-  //set new monsterID to a trackable number
+  //set new monster's ID to a trackable number
     monster.setAttribute('id', monsterId);
     mainEl.appendChild(monster);
 }
 
+//add monster object to monster array
 const addMonster = () => {
+    //advance monster tracker
     monsterId++;
     monsterArr.push({
         type: 'zombie',
@@ -39,30 +41,34 @@ const addMonster = () => {
     });
 }
 
+//move monster on screen by advancing along grid columns
 const updateMonstCol = () => {
+    console.log("updateMonstCol");
     for (i = 0; i < monsterArr.length; i ++){
     
-    if(monsterArr[i].colStart < 12){
-        const oldStart = monsterArr[i].colStart;
-        monsterArr[i].colStart++
-        monsterArr[i].colEnd++
-        const monsToClassify = document.getElementById = `${i}`;
-      //remove class specifying location
-        console.log(monstToClassify.typeOf)
-        monsToClassify.classList.remove(`gridSpace${oldStart}`);
-        monsToClassify.className = `gridSpace ${monsterArr[i].colStart}`;
+        if(monsterArr[i].colStart < 12){
+            const oldStart = monsterArr[i].colStart;
+            monsterArr[i].colStart++;
+            monsterArr[i].colEnd++;
+            /*const monsToClassify = document.getElementById = `${i}`;
+            
+            */
+        //remove class specifying location
+            /* 
+            monsToClassify.classList.remove(`gridSpace${oldStart}`);
+            monsToClassify.className = `gridSpace${monsterArr[i].colStart}`;
+            */
       //change classes instead?
-        /*
+        
+        const monsterIdString = "monst" + i;    
         const monsterInCss = document.getElementById(monsterIdString);
-      //console.log(monsterIdString)
-      //console.log(monsterInCss);
+        console.log(monsterIdString)
         monsterInCss.removeAttribute('style');
         monsterInCss.setAttribute('style', 'grid-column:' +  monsterArr[i].colStart + '/' + monsterArr[i].colEnd);
-    */
+    
         }
     }
 }
-
 
 const createPlayer = () => {
     playerDiv = document.createElement('div');
@@ -70,19 +76,21 @@ const createPlayer = () => {
     mainEl.appendChild(playerDiv);
 } 
 
-
-const playGame = () => {
-    createMonster()
-    createPlayer()
+const freshMonster = () => {
+    console.log("freshMonster");
+    createMonster();
+    addMonster();
 }
 
+createPlayer();
+const makeMonst = setInterval(freshMonster, 2500);
+const updateColumns = setInterval(updateMonstCol, 1000);
 
-
-setInterval(updateMonstCol(), 1000)
-setInterval(addMonster(), 2500)
-
-playGame();
-console.log(monsterArr.length)
+//on player demise
+if (playerChar.hitPoints === 0) {
+    clearInterval(updateColumns);
+    clearInterval(newMonst);
+}
 
 /*
 const zombTimer = setInterval(createZombie, 2000);
