@@ -45,16 +45,16 @@ const addMonster = () => {
 const updateMonstCol = () => {
     console.log("updateMonstCol");
     for (i = 0; i < monsterArr.length; i ++){
-    
+        console.log(monsterArr[i].colStart);
         if(monsterArr[i].colStart < 12){
             const oldStart = monsterArr[i].colStart;
             monsterArr[i].colStart++;
             monsterArr[i].colEnd++;
             const monsterIdString = "monst" + i;    
             const monsterInCss = document.getElementById(monsterIdString);
-            console.log(monsterIdString)
-            monsterInCss.removeAttribute('style');
-            monsterInCss.setAttribute('style', 'grid-column:' +  monsterArr[i].colStart + '/' + monsterArr[i].colEnd);
+            
+            //monsterInCss.removeAttribute('style');
+            //monsterInCss.setAttribute('style', 'grid-column:' +  monsterArr[i].colStart + '/' + monsterArr[i].colEnd);
         }
     }
 }
@@ -66,11 +66,11 @@ const createPlayer = () => {
 } 
 
 const freshMonster = () => {
-    //create new monsters
-    //console.log("freshMonster");
+    //create new monsters (but no more than 21)
     if (monsterId < 21) {
         createMonster();
         addMonster();
+
     }
 }
 
@@ -85,25 +85,15 @@ const checkPlayerHp = () => {
 }
 
 
-//stop generating monsters if there has been time to make 20 of them
-/*
-const noMoreMonsters = () => {
-    clearInterval(makeMonst);
-}
-*/
 
-//const stopMonstArrival = setTimout(noMoreMonsters, 50000);
+
 
 const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
 const makeMonst = setInterval(freshMonster, 2500);
-const stopGenerateMonst = setInterval(checkNumbMonst, 2500);
 const updateColumns = setInterval(updateMonstCol, 200);
 
 
-/*
-const zombTimer = setInterval(createZombie, 2000);
-const zombCreateStop = setTimeout(clearInterval(zombTimer), 20000);
-*/
+
 
 // move zombies toward player char
 //MVP will only concern itself with monsters from one direction
