@@ -81,6 +81,7 @@ const checkPlayerHp = () => {
         clearInterval(updateColumns);
         clearInterval(newMonst);
         clearInterval(checkPlayerHitPoints);
+        document.getElementById('footText').innerHTML = "Oh no! You lost. Maybe you'll join the undead.";
     }
 }
 
