@@ -27,6 +27,11 @@ main {
     grid-template-columns: repeat(13, 1fr);
     grid-template-rows: 1fr 12rem; 
     align-content: end;
+    background-image: url("images/digiBar.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: whitesmoke;
 }
 
 .monster {
