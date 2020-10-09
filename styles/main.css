@@ -5,6 +5,7 @@ html, body {
 }
 
 body {
+    background-color: #121212;
     dispay: grid;
     grid-template-rows: 1fr 70% 1fr;
 }
@@ -38,12 +39,75 @@ main {
     background-color: whitesmoke;
 }
 
+#spot0 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+
+#spot1 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+#spot3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+#spot4 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+
+#spot5 {
+    grid-column-start: 5;
+    grid-column-end: 6;
+}
+
+#spot6 {
+    grid-column-start: 6;
+    grid-column-end: 7;
+}
+
+#spot7 {
+    grid-column-start: 7;
+    grid-column-end: 8;
+}
+
+#spot8 {
+    grid-column-start: 8;
+    grid-column-end: 9;
+}
+
+#spot9 {
+    grid-column-start: 9;
+    grid-column-end: 10;
+}
+
+#spot10 {
+    grid-column-start: 10;
+    grid-column-end: 11;
+}
+
+#spot11 {
+    grid-column-start: 12;
+    grid-column-end: 13;
+}
+
+.spot {
+    background-color: whitesmoke;
+}
+
+.monster, .player, .spot {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
 .monster {
     display: inline;
     padding: 6rem 2rem;
     background-color: red;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    transition: 1s;
 }
 
 .player {
@@ -52,8 +116,7 @@ main {
     background-color: purple;
     grid-column-start: 13;
     grid-column-end: 14;
-    grid-row-start: 2;
-    grid-row-end: 3;
+    
 }
 
 toggleDisplay {

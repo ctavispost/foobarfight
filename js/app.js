@@ -1,11 +1,12 @@
+const getBElements = document.querySelectorAll('b');
+console.log(getBElements);
+
 //set monster counter to be added to new monster elements as an ID
 let monsterId = 0;
 
 const monsterArr = [{
     type: 'zombie', //noted for later versions to be able to have other monsters
     attack: 1,
-    colStart: 1,
-    colEnd: 2,
     hitPoints: 4
 }];
 
@@ -23,7 +24,7 @@ const createMonster = () => {
     monster.setAttribute('class', 'monster');
 
   //set new monster's ID to a trackable number
-    monster.setAttribute('id', monsterId);
+    monster.setAttribute('id', `monstId${monsterId}`);
     mainEl.appendChild(monster);
 }
 
@@ -47,9 +48,18 @@ const updateMonstCol = () => {
             const oldStart = monsterArr[i].colStart;
             monsterArr[i].colStart++;
             monsterArr[i].colEnd++;
-            //const monsterIdString = '' + i;    
-            //const monsterInCss = document.getElementById(monsterIdString);
-            //console.log(MonsterInCss);
+            
+            
+            //console.log(monsterIdString)  
+            const monsterInCss = document.getElementById(`monstId${i}`);
+            console.log(`monstId${i}`);
+            console.log(MonsterInCss);
+
+            monsterInCss.style.gridColumnStart = monsterArr[i].colStart++;
+            monsterInCss.style.gridColumnEnd = monsterArr[i].colEnd++;
+            
+            console.log(MonsterInCss);
+            
         } else {
             const twelve = 12;
             const thirteen = 13;
@@ -67,8 +77,6 @@ const monsterHit = () => {
     }
 }
 
-
-
 const createPlayer = () => {
     playerDiv = document.createElement('div');
     playerDiv.setAttribute('class', 'player');
@@ -80,7 +88,6 @@ const freshMonster = () => {
     if (monsterId < 12) {
         createMonster();
         addMonster();
-
     }
 }
 
@@ -109,18 +116,18 @@ const checkMonstHp = () => {
 }
 
 //not firing just now; also needs some kind of limit so it can't be spammed
-const playerAttack = () => {
-    for(i = 0; i < Array.length; i++){
+const playerKick = document.addEventListener('keydown', (event) => {
+    // handle keydown
+    for (i = 0; i < monsterArr.length; i++){
         if(monsterArr[i].startCol === 12){
-            document.addEventListener('keydown', (event) => {
-                monsterArr[i].hitPoints -= playerChar.attack;
-            })
-        }
+            monsterArr[i].hitPoints -= playerChar.attack;
+        }    
     }
-}
+})
 
-const mAttack = setInterval(monsterHit, 500);
-const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
+
 const makeMonst = setInterval(freshMonster, 2500);
-const updateColumns = setInterval(updateMonstCol, 200);
 
+const updateColumns = setInterval(updateMonstCol, 200);
+const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
+const monsterAttack = setInterval(monsterHit, 500);
