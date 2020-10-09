@@ -19,7 +19,6 @@ const playerChar = {
 const mainEl = document.querySelector('main');
 
 const createMonster = () => {
-    console.log('createMonster');
     const monster = document.createElement('div');
     monster.setAttribute('class', 'monster');
 
@@ -43,21 +42,32 @@ const addMonster = () => {
 
 //move monster on screen by advancing along grid columns
 const updateMonstCol = () => {
-    console.log("updateMonstCol");
-    for (i = 0; i < monsterArr.length; i ++){
-        console.log(monsterArr[i].colStart);
+    for (i = 0; i < monsterArr.length; i++){
         if(monsterArr[i].colStart < 12){
             const oldStart = monsterArr[i].colStart;
             monsterArr[i].colStart++;
             monsterArr[i].colEnd++;
-            const monsterIdString = "monst" + i;    
-            const monsterInCss = document.getElementById(monsterIdString);
-            
-            //monsterInCss.removeAttribute('style');
-            //monsterInCss.setAttribute('style', 'grid-column:' +  monsterArr[i].colStart + '/' + monsterArr[i].colEnd);
+            //const monsterIdString = '' + i;    
+            //const monsterInCss = document.getElementById(monsterIdString);
+            //console.log(MonsterInCss);
+        } else {
+            const twelve = 12;
+            const thirteen = 13;
+            monsterArr[i].colStart = twelve;
+            monsterArr[i].colEnd = thirteen;
         }
     }
 }
+
+const monsterHit = () => {
+    for (i = 0; i < monsterArr.length; i++) {
+        if(monsterArr[i].colStart >= 12) {
+            playerChar.hitPoints -= monsterArr[i].attack;
+        }
+    }
+}
+
+
 
 const createPlayer = () => {
     playerDiv = document.createElement('div');
@@ -66,8 +76,8 @@ const createPlayer = () => {
 } 
 
 const freshMonster = () => {
-    //create new monsters (but no more than 21)
-    if (monsterId < 21) {
+    //create new monsters (but no more than 12)
+    if (monsterId < 12) {
         createMonster();
         addMonster();
 
@@ -75,74 +85,42 @@ const freshMonster = () => {
 }
 
 createPlayer();
-//check for player demise, stop game and end timers if dead
+
+//check for player demise, stop game, end timers if dead
 const checkPlayerHp = () => {
     if (playerChar.hitPoints === 0) {
         clearInterval(updateColumns);
         clearInterval(newMonst);
         clearInterval(checkPlayerHitPoints);
-        document.getElementById('footText').innerHTML = "Oh no! You lost. Maybe you'll join the undead.";
+        document.getElementById('footText').innerHTML = "Oh no! You lost... Maybe you'll join the undead.";
+        document.querySelector('main').style.backgroundImage = "url('./images/defeat.jpg')"
     }
 }
 
+//monster dies: display none and set attack to 0
+const checkMonstHp = () => {
+    for (i = 0; i < monsterArr.length; i++) {
+        if (monsterArr[i].hitPoints === 0){
+            monsterArr[i].attack = 0;
+            const deadAgainUndead = document.getElementById[i];
+            deadAgainUndead.className += toggleDisplay;
+        }
+    }
+}
 
+//not firing just now; also needs some kind of limit so it can't be spammed
+const playerAttack = () => {
+    for(i = 0; i < Array.length; i++){
+        if(monsterArr[i].startCol === 12){
+            document.addEventListener('keydown', (event) => {
+                monsterArr[i].hitPoints -= playerChar.attack;
+            })
+        }
+    }
+}
 
-
-
+const mAttack = setInterval(monsterHit, 500);
 const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
 const makeMonst = setInterval(freshMonster, 2500);
 const updateColumns = setInterval(updateMonstCol, 200);
 
-
-
-
-// move zombies toward player char
-//MVP will only concern itself with monsters from one direction
-/*const monstersMove = (counter) => {
-    if (monsters[counter].position < 6)
-    const oldPosition = monsters[counter].position;
-    const newPosition = monsters[counter].postion++;                
-    } //for attacks from either side:
-    /*else if (monsters[counter].position > 7) {
-        monsters[counter].position--;
-    }*/
-/*
-    const zomIdOld = document.getElementById('monst' + oldPosition);
-    zomIdOld.classlist.add('toggleMonster');     
-    const zomIdNew = document.getElementByID('monst' + newPosition);
-    zomIdNew.classlist.remove('toggleMonster');
-}*/
-/*
-const getDamage = (place) => {
-    if (monsters[place].position === 6) { //for dual sided attacks: (7 || 6)) {
-        playerHP -= monsters[place].attack;
-    }
-}
-*/
-/*
-const monstersTurn = () => {
-    if (monsters.length !== 0){
-        for (i = 0; i < monsters.length; i++) {
-            monstersMove(i);
-            getDamage(i);
-        }
-    }
-}
-*/
-//const timeTurns = setInterval(monstersTurn, 2000);
-/*
-const checkHealth = () => {
-    if (playerHP === 0) {
-        clearInterval(timeTurns);
-    } 
-}
-*/
-/*
-const runGame = () => {
-    zombTimer;
-    zombCreateStop;
-    timeTurns;
-}
-
-runGame();
-*/
