@@ -35,8 +35,6 @@ const addMonster = () => {
     monsterArr.push({
         type: 'zombie',
         attack: 1,
-        colStart: 1,
-        colEnd: 2,
         hitPoints: 4
     });
 }
@@ -97,7 +95,7 @@ createPlayer();
 const checkPlayerHp = () => {
     if (playerChar.hitPoints === 0) {
         clearInterval(updateColumns);
-        clearInterval(newMonst);
+        clearInterval(freshMonst);
         clearInterval(checkPlayerHitPoints);
         document.getElementById('footText').innerHTML = "Oh no! You lost... Maybe you'll join the undead.";
         document.querySelector('main').style.backgroundImage = "url('./images/defeat.jpg')"
@@ -117,10 +115,13 @@ const checkMonstHp = () => {
 
 //not firing just now; also needs some kind of limit so it can't be spammed
 const playerKick = document.addEventListener('keydown', (event) => {
+    console.log(playerKick);
     // handle keydown
     for (i = 0; i < monsterArr.length; i++){
         if(monsterArr[i].startCol === 12){
-            monsterArr[i].hitPoints -= playerChar.attack;
+            const monstToKill = document.getElementById(`monstId${1}`);
+            monstToKill.remove();
+            //monsterArr[i].hitPoints -= playerChar.attack;
         }    
     }
 })

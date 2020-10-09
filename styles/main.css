@@ -38,7 +38,7 @@ main {
     background-repeat: no-repeat;
     background-color: whitesmoke;
 }
-
+/*
 #spot0 {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -93,6 +93,7 @@ main {
     grid-column-start: 12;
     grid-column-end: 13;
 }
+*/
 
 .spot {
     background-color: whitesmoke;
