@@ -30,5 +30,5 @@ As a player, I want to...so that...and this is of ____ importance):
 - know victory and loss conditions...so I know the game has a stopping point...low
 
 ![sketches](https://drive.google.com/file/d/1enPbYizpiBMQsiMIwH-Na7u-wOmmwlyr/view?usp=sharing "gameplay sketches")
-![wireframes and flow](https://drive.google.com/file/d/1788RbtPcoRDFwK6bu116azsz72mkdfpX/view?usp=sharing "wireframes with flow")
+![wireframes and flow](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/PXL_20201002_222501520.jpg "wireframes with flow")
 
