@@ -1,14 +1,40 @@
-const getBElements = document.querySelectorAll('b');
-console.log(getBElements);
+//keep track to be able to limit number of monsters
+let monsterCount = 0
+let monstersBeatUp = 0
 
-//set monster counter to be added to new monster elements as an ID
-let monsterId = 0;
+//contains objects with details about monsters
+const monstersArr = []
 
-const monsterArr = [{
-    type: 'zombie', //noted for later versions to be able to have other monsters
-    attack: 1,
-    hitPoints: 4
-}];
+
+//creates 12 monsters 
+const monsterAppears = () =>{
+    if (monsterCount < 12){
+        const firstStep = document.getElementById('spot0')
+        firstStep.classList.add('monster')
+        monsterCount++
+        monstersArr.push({
+            type: 'zombie', 
+            steps: 1
+        })    
+    }
+}
+
+//monsters appear every 3 seconds
+setInterval(monsterAppears, 3000)
+
+//to create monster movement, removes monster from old spot and place one column to the left
+const monstersMove = () => {
+    for(i = 0; i < monsterCount; i++){
+        if(monstersArr[i].steps < 12){
+            const stepCount = monstersArr[i].steps++;
+            const leaveGridSpot = document.getElementById(`spot${stepCount - 1}`).classList.remove("monster")
+            const newSpot = document.getElementById(`spot${stepCount}`).classList.add("monster")
+        }
+    }
+}
+
+//monsters move once a second
+setInterval(monstersMove, 1000)
 
 const playerChar = {
     type: 'player',
@@ -17,18 +43,21 @@ const playerChar = {
 }
 
 //get main element to append new elements to
-const mainEl = document.querySelector('main');
+//const mainEl = document.querySelector('main');
 
+/*
 const createMonster = () => {
     const monster = document.createElement('div');
     monster.setAttribute('class', 'monster');
 
   //set new monster's ID to a trackable number
     monster.setAttribute('id', `monstId${monsterId}`);
+    //right now this is just appending to the first empty grid space
     mainEl.appendChild(monster);
 }
-
+*/
 //add monster object to monster array
+/*
 const addMonster = () => {
     //advance monster tracker
     monsterId++;
@@ -38,9 +67,10 @@ const addMonster = () => {
         hitPoints: 4
     });
 }
+*/
 
 //move monster on screen by advancing along grid columns
-const updateMonstCol = () => {
+/*const updateMonstCol = () => {
     for (i = 0; i < monsterArr.length; i++){
         if(monsterArr[i].colStart < 12){
             const oldStart = monsterArr[i].colStart;
@@ -50,13 +80,14 @@ const updateMonstCol = () => {
             
             //console.log(monsterIdString)  
             const monsterInCss = document.getElementById(`monstId${i}`);
-            console.log(`monstId${i}`);
-            console.log(MonsterInCss);
+            //console.log(`monstId${i}`);
+            //console.log(MonsterInCss);
 
-            monsterInCss.style.gridColumnStart = monsterArr[i].colStart++;
-            monsterInCss.style.gridColumnEnd = monsterArr[i].colEnd++;
+            monsterInCss.style.gridColumnStart = monsterArr[i].colStart;
+            monsterInCss.style.gridColumnEnd = monsterArr[i].colEnd;
+            const leaveSpot = document.getElementById(`monstId${i - 1}`).classList.remove('monster');
             
-            console.log(MonsterInCss);
+            //console.log(MonsterInCss);
             
         } else {
             const twelve = 12;
@@ -66,11 +97,12 @@ const updateMonstCol = () => {
         }
     }
 }
+*/
 
 const monsterHit = () => {
     for (i = 0; i < monsterArr.length; i++) {
         if(monsterArr[i].colStart >= 12) {
-            playerChar.hitPoints -= monsterArr[i].attack;
+            playerChar.hitPoints-- //= monsterArr[i].attack;
         }
     }
 }
@@ -115,7 +147,6 @@ const checkMonstHp = () => {
 
 //not firing just now; also needs some kind of limit so it can't be spammed
 const playerKick = document.addEventListener('keydown', (event) => {
-    console.log(playerKick);
     // handle keydown
     for (i = 0; i < monsterArr.length; i++){
         if(monsterArr[i].startCol === 12){

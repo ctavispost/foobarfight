@@ -6,8 +6,8 @@ html, body {
 
 body {
     background-color: #121212;
-    dispay: grid;
-    grid-template-rows: 1fr 70% 1fr;
+    display: grid;
+    grid-template-rows: 1fr 70% 1fr; /* header, main, footer */
 }
 
 .gridCenter {
@@ -38,7 +38,34 @@ main {
     background-repeat: no-repeat;
     background-color: whitesmoke;
 }
-/*
+
+/* leave room above player and monsters for background image */
+.monster, .player, .spot {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.monster {
+    display: inline;
+    padding: 6rem 2rem;
+    background-color: red;
+    transition: 1s;
+}
+
+.player {
+    display: inline;
+    padding: 6rem 2rem;
+    background-color: purple;
+    grid-column-start: 13;
+    grid-column-end: 14;
+    
+}
+
+.spot {
+    transition: 0.5s;
+}
+
+/* spot 0 through 11 represent spaces the monsters can appear in */
 #spot0 {
     grid-column-start: 1;
     grid-column-end: 2;
@@ -92,97 +119,4 @@ main {
 #spot11 {
     grid-column-start: 12;
     grid-column-end: 13;
-}
-*/
-
-.spot {
-    background-color: whitesmoke;
-}
-
-.monster, .player, .spot {
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.monster {
-    display: inline;
-    padding: 6rem 2rem;
-    background-color: red;
-    transition: 1s;
-}
-
-.player {
-    display: inline;
-    padding: 6rem 2rem;
-    background-color: purple;
-    grid-column-start: 13;
-    grid-column-end: 14;
-    
-}
-
-toggleDisplay {
-    display: none;
-}
-
-gridSpace2 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-}
-
-gridSpace3{
-    grid-column-start: 3;
-    grid-column-end: 4;
-}
-
-gridSpace4 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    
-}
-
-gridSpace5 {
-    grid-column-start: 5;
-    grid-column-end: 6;
-    
-}
-
-gridSpace6 {
-    grid-column-start: 6;
-    grid-column-end: 7;
-    
-}
-
-gridSpace7 {
-    grid-column-start: 7;
-    grid-column-end: 8;
-    
-}
-
-gridSpace8 {
-    grid-column-start: 8;
-    grid-column-end: 9;
-    
-}
-
-gridSpace9 {
-    grid-column-start: 9;
-    grid-column-end: 10;
-    
-}
-
-gridspace10 {
-    grid-column-start: 10;
-    grid-column-end: 11;
-}
-
-gridspace11 {
-    grid-column-start: 11;
-    grid-column-end: 12;
-    
-}
-
-gridSpace12 {
-    grid-column-start: 12;
-    grid-column-end: 13;
-
 }
