@@ -1,3 +1,7 @@
+html {
+    font-family: 'Noto Sans', sans-serif;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -20,7 +24,7 @@ header, footer {
 }
 
 .backgroundDark {
-    background: #121212;
+    background: #121212; /* Material Design dark theme base color  */
 }
 
 .padTwoRem {
@@ -36,7 +40,7 @@ main {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-color: whitesmoke;
+    background-color: whitesmoke; /* fallback */
     width: 90vw;
 }
 
