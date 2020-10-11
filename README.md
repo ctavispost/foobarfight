@@ -10,7 +10,7 @@ Click on the space in front of your player (the purple rectangle) to fight off t
 ## Making of
 This game was made using HTML, CSS, and Javascript, all vanilla (straight, no chaser). FBF relies heavily upon grid areas. Without it the monsters wouldn't be able to move, and what fun would that be?
 
-The background was drawn (from a unsplash stock photo) in Autodesk Skethcbook on an iPad, and then pixelated in 8Bit Photo Lab.
+The background was drawn (from a [unsplash stock photo](https://images.unsplash.com/photo-1583227061267-8428fb76fbfd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=957&q=80) by Oliver Frsh @frshmn) in Autodesk Skethcbook on an iPad, and then pixelated in 8Bit Photo Lab.
 
 ## MVP
 The MVP includes one type of monster (zombies, naturally) which will advance on the hero and then drain his hp.The he can attack nearby monsters to defend themselves. Victory ends the game and bring a fitting message and background. Death, at this moment, is not final.
