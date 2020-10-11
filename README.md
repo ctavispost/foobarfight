@@ -48,4 +48,4 @@ As a player, I want to...so that...and this is of ____ importance):
 ## Screenshots
 ![gameplay](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/screeenshot.jpg "gameplay")
 ![victory](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/victoryScreen.jpg "victory")
-
+![loss](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/lossScreen.jpg "loss")
