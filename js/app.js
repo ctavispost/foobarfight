@@ -1,14 +1,15 @@
 //keep track to be able to limit number of monsters
 let monsterCount = 0
-let monstersBeatUp = 0
+let monstersBeat = 0
+const totalMonst = 12
 
 //contains objects with details about monsters
 const monstersArr = []
 
 
-//creates 12 monsters, one at a time
+//creates 12 monsters, one at a time; pushes to monstersArr
 const monsterAppears = () =>{
-    if (monsterCount < 12){
+    if (monsterCount < totalMonst){
         const firstStep = document.getElementById('spot0')
         firstStep.classList.add('monster')
         monsterCount++
@@ -19,8 +20,7 @@ const monsterAppears = () =>{
     }
 }
 
-//monsters appear every 3 seconds
-setInterval(monsterAppears, 3000)
+
 
 //to create monster movement, removes monster from old spot and place one column to the left
 const monstersMove = () => {
@@ -33,19 +33,15 @@ const monstersMove = () => {
     }
 }
 
-//monsters move once a second
-setInterval(monstersMove, 1000)
-
 const playerChar = {
     type: 'player',
-    attack: 2,
     hitPoints: 20
 }
 
 //monsterts attack once they reach the player character
 const monsterHit = () => {
-    for (i = 0; i < monsterArr.length; i++) {
-        if(monsterArr[i].steps === 12) {
+    for (i = 0; i < monstersArr.length; i++) {
+        if(monstersArr[i].steps === 12) {
             playerChar.hitPoints--
         }
     }
@@ -56,17 +52,30 @@ const createPlayer = () => {
     playerSpot.setAttribute('class', 'player')
 } 
 
+//clear intervals on win or loss
+const endgame = () => {
+    clearInterval(monsterAppears)
+    clearInterval(monstersMove)
+    clearInterval(checkPlayerHp)
+    clearInterval(monsterHit)
+}
 
-createPlayer();
+//check number of monsters beat up, if it equals goal, end game and declare victory
+const checkMonstersBeat = () => {
+    if (monstersBeat === totalMonst){
+        endgame;
+        document.getElementById('footText').innerHTML = "You won! You're still alive and your bar is safe... for now."
+        document.querySelector('main').style.backgroundImage = "url('./images/victory.jpg')"
+    }
+    
+
+}
 
 //check for player demise or victory, stop game, end timers if dead
 const checkPlayerHp = () => {
     if (playerChar.hitPoints === 0) {
-        clearInterval(updateColumns)acksad
-        ;
-        clearInterval(freshMonst);
-        clearInterval(checkPlayerHitPoints);
-        document.getElementById('footText').innerHTML = "Oh no! You lost... Maybe you'll join the undead.";
+        endgame
+        document.getElementById('footText').innerHTML = "Oh no! You lost... Maybe you'll join the undead."
         document.querySelector('main').style.backgroundImage = "url('./images/defeat.jpg')"
     }
 }
@@ -77,18 +86,25 @@ const hitMonster = () => {
         if(monstersArr[i].steps === 12) {
             document.getElementById("spot11").classList.remove('monster')
             monstersArr.shift()
-            monstersbeat++
+            monstersBeat++
         }
     }
 }
+
+createPlayer();
 
 //player attacks on mouse-click
 const getBody = document.querySelector("body")
 getBody.addEventListener('click', hitMonster)
 
+//monsters appear every 2.5 seconds
+const newMonster = setInterval(monsterAppears, 2500)
+//monsters move once a second
+const moveMonsters = setInterval(monstersMove, 1000)
 
-const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
-const monsterAttack = setInterval(monsterHit, 500);
+const checkPlayerHitPoints = setInterval(checkPlayerHp, 500)
+const checkMonstersBeat = setInterval(checkMonstersBeat, 500)
+const monsterAttack = setInterval(monsterHit, 500)
 
 //old code
 //get main element to append new elements to
