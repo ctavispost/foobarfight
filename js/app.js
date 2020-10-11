@@ -6,7 +6,7 @@ let monstersBeatUp = 0
 const monstersArr = []
 
 
-//creates 12 monsters 
+//creates 12 monsters, one at a time
 const monsterAppears = () =>{
     if (monsterCount < 12){
         const firstStep = document.getElementById('spot0')
@@ -42,6 +42,55 @@ const playerChar = {
     hitPoints: 20
 }
 
+//monsterts attack once they reach the player character
+const monsterHit = () => {
+    for (i = 0; i < monsterArr.length; i++) {
+        if(monsterArr[i].steps === 12) {
+            playerChar.hitPoints--
+        }
+    }
+}
+
+const createPlayer = () => {
+    const playerSpot = document.getElementById('spot12')
+    playerSpot.setAttribute('class', 'player')
+} 
+
+
+createPlayer();
+
+//check for player demise or victory, stop game, end timers if dead
+const checkPlayerHp = () => {
+    if (playerChar.hitPoints === 0) {
+        clearInterval(updateColumns)acksad
+        ;
+        clearInterval(freshMonst);
+        clearInterval(checkPlayerHitPoints);
+        document.getElementById('footText').innerHTML = "Oh no! You lost... Maybe you'll join the undead.";
+        document.querySelector('main').style.backgroundImage = "url('./images/defeat.jpg')"
+    }
+}
+
+//removes first item of monstersArr & monster class from 12th column, adds to monstersBeat count; there should be a better solution, leaving the column red if more than one monster is there
+const hitMonster = () => {
+    for (i = 0; i < monstersArr.length; i++){
+        if(monstersArr[i].steps === 12) {
+            document.getElementById("spot11").classList.remove('monster')
+            monstersArr.shift()
+            monstersbeat++
+        }
+    }
+}
+
+//player attacks on mouse-click
+const getBody = document.querySelector("body")
+getBody.addEventListener('click', hitMonster)
+
+
+const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
+const monsterAttack = setInterval(monsterHit, 500);
+
+//old code
 //get main element to append new elements to
 //const mainEl = document.querySelector('main');
 
@@ -99,20 +148,7 @@ const addMonster = () => {
 }
 */
 
-const monsterHit = () => {
-    for (i = 0; i < monsterArr.length; i++) {
-        if(monsterArr[i].colStart >= 12) {
-            playerChar.hitPoints-- //= monsterArr[i].attack;
-        }
-    }
-}
-
-const createPlayer = () => {
-    playerDiv = document.createElement('div');
-    playerDiv.setAttribute('class', 'player');
-    mainEl.appendChild(playerDiv);
-} 
-
+/*
 const freshMonster = () => {
     //create new monsters (but no more than 12)
     if (monsterId < 12) {
@@ -120,20 +156,9 @@ const freshMonster = () => {
         addMonster();
     }
 }
+*/
 
-createPlayer();
-
-//check for player demise, stop game, end timers if dead
-const checkPlayerHp = () => {
-    if (playerChar.hitPoints === 0) {
-        clearInterval(updateColumns);
-        clearInterval(freshMonst);
-        clearInterval(checkPlayerHitPoints);
-        document.getElementById('footText').innerHTML = "Oh no! You lost... Maybe you'll join the undead.";
-        document.querySelector('main').style.backgroundImage = "url('./images/defeat.jpg')"
-    }
-}
-
+/*
 //monster dies: display none and set attack to 0
 const checkMonstHp = () => {
     for (i = 0; i < monsterArr.length; i++) {
@@ -156,10 +181,10 @@ const playerKick = document.addEventListener('keydown', (event) => {
         }    
     }
 })
+*/
 
-
+/*
 const makeMonst = setInterval(freshMonster, 2500);
 
 const updateColumns = setInterval(updateMonstCol, 200);
-const checkPlayerHitPoints = setInterval(checkPlayerHp, 500);
-const monsterAttack = setInterval(monsterHit, 500);
+*/
