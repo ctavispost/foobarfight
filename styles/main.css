@@ -37,6 +37,7 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     background-color: whitesmoke;
+    width: 90vw;
 }
 
 /* leave room above player and monsters for background image */
