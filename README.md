@@ -44,6 +44,6 @@ As a player, I want to...so that...and this is of ____ importance):
 ![wireframes and flow](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/PXL_20201002_222501520.jpg "wireframes with flow")
 
 ## Screenshots
-![gameplay](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/screenshot.jpg "gameplay")
+![gameplay](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/screeenshot.jpg "gameplay")
 ![victory](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/victoryScreen.jpg "victory")
 
