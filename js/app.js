@@ -103,7 +103,7 @@ const newMonster = setInterval(monsterAppears, 2500)
 const moveMonsters = setInterval(monstersMove, 1000)
 
 const checkPlayerHitPoints = setInterval(checkPlayerHp, 500)
-const checkMonstersBeat = setInterval(checkMonstersBeat, 500)
+const checkAllMonstersBeat = setInterval(checkMonstersBeat, 500)
 const monsterAttack = setInterval(monsterHit, 500)
 
 //old code
