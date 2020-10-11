@@ -13,7 +13,7 @@ This game was made using HTML, CSS, and Javascript, all vanilla (straight, no ch
 The background was drawn (from a unsplash stock photo) in Autodesk Skethcbook on an iPad, and then pixelated in 8Bit Photo Lab.
 
 ## MVP
-The MVP includes one type of monster (zombies, naturally) which will advance on the hero and then drain his hp, and an attack for the hero to defend themselves. Death or victory end the game and bring a fitting message and background.
+The MVP includes one type of monster (zombies, naturally) which will advance on the hero and then drain his hp.The he can attack nearby monsters to defend themselves. Victory ends the game and bring a fitting message and background. Death, at this moment, is not final.
 
 ## Icebox
 Nice-to-haves include: 
@@ -24,6 +24,8 @@ Nice-to-haves include:
 - a choice between old school graphics and svg drawings
 - start and pause screens
 - a wider stage with monsters advancing from in front and back of the player
+
+As a former gametester, I'd also like to fix the buggy movement of the monsters and make the loss condition permanent and predictable.
 
 ## User stories
 
