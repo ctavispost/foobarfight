@@ -4,6 +4,8 @@
 
 You play as a bartender and martial artist whose bar is under siege by monsters! You can kick them to destroy the fiends and protect your booze. But being touched by monsters slowly drains your hit-points. Don't die! Take out all the creatures of the night, and drink to your health.
 
+[Play the game!](https://ctavispost.github.io/foobarfight/) 
+
 ## Gameplay
 Click on the space in front of your player (the purple rectangle) to fight off the red monsters. Do it quickly, or you might die.
 
@@ -27,6 +29,8 @@ Nice-to-haves include:
 
 As a former gametester, I'd also like to fix the buggy movement of the monsters and make the loss condition permanent and predictable.
 
+Eventually, the player character should be mobile.
+
 ## User stories
 
 As a player, I want to...so that...and this is of ____ importance):
@@ -49,3 +53,30 @@ As a player, I want to...so that...and this is of ____ importance):
 ![gameplay](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/screeenshot.jpg "gameplay")
 ![victory](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/victoryScreen.jpg "victory")
 ![loss](https://raw.githubusercontent.com/ctavispost/foobarfight/main/images/lossScreen.jpg "loss")
+
+## Code snippet
+```//creates 12 monsters, one at a time; pushes to monstersArr
+const monsterAppears = () =>{
+    if (monsterCount < totalMonst){
+        const firstStep = document.getElementById('spot0')
+        firstStep.classList.add('monster')
+        monsterCount++
+        monstersArr.push({
+            type: 'zombie', 
+            steps: 1
+        })    
+    }
+}
+
+
+
+//to create monster movement, removes monster from old spot and place one column to the left
+const monstersMove = () => {
+    for(i = 0; i < monsterCount; i++){
+        if(monstersArr[i].steps < 12){
+            const stepCount = monstersArr[i].steps++;
+            const leaveGridSpot = document.getElementById(`spot${stepCount - 1}`).classList.remove("monster")
+            const newSpot = document.getElementById(`spot${stepCount}`).classList.add("monster")
+        }
+    }
+}```
