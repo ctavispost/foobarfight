@@ -75,6 +75,9 @@ const checkPlayerHp = () => {
         endgame
         document.getElementById('footText').innerHTML = "Oh no! You lost... Maybe you'll join the undead."
         document.querySelector('main').style.backgroundImage = "url('./images/defeat.jpg')"
+        getBody.removeEventListener('click', hitMonster)
+        document.getElementById("spot12").classList.remove('player')
+
     }
 }
 
