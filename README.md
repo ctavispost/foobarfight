@@ -24,7 +24,7 @@ Nice-to-haves include:
 -a player select screen 
 - animated attacks
 - a choice between old school graphics and svg drawings
-- start and pause screens
+- start, pause, and reset buttons or screens
 - a wider stage with monsters advancing from in front and back of the player
 
 As a former gametester, I'd also like to fix the buggy movement of the monsters and make the loss condition permanent and predictable.
